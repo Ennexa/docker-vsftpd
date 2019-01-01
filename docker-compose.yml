@@ -1,0 +1,17 @@
+version: '2.2'
+services:
+  ftp:
+    image: ennexa/vsftpd
+    environment:
+      - FTP_USER=user
+      - FTP_PASS=Password
+      - PASV_ENABLE=YES
+      - PASV_ADDRESS=127.0.0.1
+      - PASV_MIN_PORT=10090
+      - PASV_MAX_PORT=10110
+    volumes:
+      - ./data/:/home/user
+    ports:
+      - "21:21"
+      - "21200-21210:21200-21210"
+
